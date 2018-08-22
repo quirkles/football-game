@@ -1,0 +1,6 @@
+bundleInfo.json
+dist
+node_modules
+npm-debug.log
+static
+server-dist
