@@ -1,2 +1,3 @@
-export const BASENAME = 'football-game'
-export const PORT = 3030
+/* globals module */
+module.exports.BASENAME = 'football-game';
+module.exports.PORT = 3030;
