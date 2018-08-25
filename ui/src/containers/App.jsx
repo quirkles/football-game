@@ -7,10 +7,10 @@ const App = ({ route }) => (
   <div>
     <ul>
       <li>
-        <NavLink to="/home">home</NavLink>
+        <NavLink to="/hello-world">hello-world</NavLink>
       </li>
       <li>
-        <NavLink to="/list">list</NavLink>
+        <NavLink to="/notfound">404</NavLink>
       </li>
       <li>
         <NavLink to="/signup">Sign up</NavLink>

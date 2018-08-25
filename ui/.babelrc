@@ -1,6 +1,79 @@
 {
   "presets": [
-    "env",
-    "react"
-  ]
+    [
+      "env",
+      {
+        "targets": {
+          "browsers": [
+            "and_chr 67",
+            "and_ff 60",
+            "and_qq 1.2",
+            "and_uc 11.8",
+            "android 67",
+            "android 4.4.3-4.4.4",
+            "android 4.4",
+            "baidu 7.12",
+            "chrome 68",
+            "chrome 67",
+            "chrome 66",
+            "chrome 63",
+            "chrome 49",
+            "edge 17",
+            "edge 16",
+            "firefox 61",
+            "firefox 60",
+            "firefox 52",
+            "ie 11",
+            "ie_mob 11",
+            "ios_saf 11.3-11.4",
+            "ios_saf 11.0-11.2",
+            "ios_saf 10.3",
+            "op_mini all",
+            "op_mob 46",
+            "opera 53",
+            "opera 52",
+            "safari 11.1",
+            "safari 11",
+            "samsung 7.2",
+            "samsung 6.2",
+            "samsung 4"
+          ]
+        },
+        "modules": false
+      }
+    ],
+    "react",
+    "stage-2"
+  ],
+  "env": {
+    "production": {
+      "presets": [
+        "react-optimize"
+      ]
+    },
+    "node": {
+      "presets": [
+        [
+          "env"
+        ]
+      ],
+      "plugins": [
+        [
+          "dynamic-import-node"
+        ]
+      ]
+    },
+    "test": {
+      "presets": [
+        [
+          "env"
+        ]
+      ],
+      "plugins": [
+        [
+          "dynamic-import-node"
+        ]
+      ]
+    }
+  }
 }
