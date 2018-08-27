@@ -1,13 +1,17 @@
-/* global process */
+/* global process $dirname*/
 import express from 'express';
+import path from 'path';
 import cookieParser from 'cookie-parser';
 import { BASENAME } from '../constants';
 
+const staticDir = path.join($dirname, '..', 'dist');
 const registerBaseMiddlewares = app => {
+  console.log(staticDir) // eslint-disable-line
+  console.log(`${BASENAME}/static`) // eslint-disable-line
   app.use(
     `${BASENAME}/static`,
     express.static(
-      'dist',
+      staticDir,
       process.env.NODE_ENV === 'development' ? {} : { maxAge: '365d' },
     ),
   );

@@ -1,4 +1,4 @@
-/* globals __dirname process */
+/* globals __dirname process module */
 
 const path = require('path');
 const webpack = require('webpack');
@@ -52,6 +52,7 @@ let webpackConfig = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
       'process.env.BROWSER': JSON.stringify(false),
+      $dirname: '__dirname',
     }),
     new webpack.LoaderOptionsPlugin({
       options: {
