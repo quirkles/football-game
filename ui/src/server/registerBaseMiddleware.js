@@ -6,8 +6,6 @@ import { BASENAME } from '../constants';
 
 const staticDir = path.join($dirname, '..', 'dist');
 const registerBaseMiddlewares = app => {
-  console.log(staticDir) // eslint-disable-line
-  console.log(`${BASENAME}/static`) // eslint-disable-line
   app.use(
     `${BASENAME}/static`,
     express.static(

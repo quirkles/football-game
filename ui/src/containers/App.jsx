@@ -3,6 +3,8 @@ import propTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 
+import './App.scss';
+
 const App = ({ route }) => (
   <div>
     <ul>

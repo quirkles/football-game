@@ -3,7 +3,9 @@ import React from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
+import Helmet from 'react-helmet';
 
+import Html from './Html';
 import { BASENAME } from '../constants';
 import routes from '../routes';
 
@@ -34,14 +36,81 @@ const registerServerSideRenderMiddleware = app => {
   app.use((req, res) => {
     console.log(req.url); // eslint-disable-line
     let context = {};
-    const html = ReactDOMServer.renderToString(
+    const childComponent = (
       <StaticRouter location={req.url} context={context}>
         {renderRoutes(routes)}
-      </StaticRouter>,
+      </StaticRouter>
     );
-        const document = `<!doctype html><div id="app">${html}</div><script type="text/javascript" src=${bundleInfo.vendor.js}></script><script type="text/javascript" src=${bundleInfo.bundle.js}></script>`; //eslint-disable-line
-    res.write(document);
-    res.end();
+    const children = ReactDOMServer.renderToString(childComponent);
+    const resourceHints = [
+      {
+        type: 'hint',
+        rel: 'preload',
+        as: 'style',
+        link:
+          process.env.NODE_ENV !== 'development' ? bundleInfo.styles.css : '',
+      },
+      {
+        type: 'hint',
+        rel: 'preload',
+        as: 'script',
+        link: bundleInfo.vendor.js,
+      },
+      {
+        type: 'hint',
+        rel: 'preload',
+        as: 'script',
+        link: bundleInfo.bundle.js,
+      },
+    ];
+    const additionalHeadResources = [
+      {
+        type: 'css',
+        link:
+          process.env.NODE_ENV !== 'development' ? bundleInfo.vendor.css : '',
+      },
+      {
+        type: 'css',
+        link:
+          process.env.NODE_ENV !== 'development' ? bundleInfo.styles.css : '',
+      },
+    ];
+    const additionalBodyResources = [
+      {
+        type: 'js',
+        link: bundleInfo.vendor.js,
+      },
+      {
+        type: 'js',
+        link: bundleInfo.bundle.js,
+      },
+    ];
+    if (process.env.NODE_ENV === 'production') {
+      additionalBodyResources.push({
+        type: 'js',
+        link: bundleInfo.styles.js,
+      });
+    }
+    const htmlProps = {
+      head: Helmet.rewind(),
+      children,
+      resourceHints,
+      additionalHeadResources,
+      additionalBodyResources,
+    };
+    const stream = ReactDOMServer.renderToStaticNodeStream(
+      <Html {...htmlProps} />,
+    );
+    res.writeHead(200, {
+      'Content-Type': 'text/html',
+      'Transfer-Encoding': 'chunked',
+    });
+    res.write('<!doctype html>');
+    stream.pipe(
+      res,
+      { end: false },
+    );
+    stream.on('end', res.end.bind(res));
   });
   return app;
 };

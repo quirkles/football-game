@@ -46,6 +46,10 @@ let webpackConfig = {
         include: path.join(__dirname, 'src'),
         exclude: [/node_modules/, path.join(__dirname, 'node_modules')],
       },
+      {
+        test: /\.(css|scss|sass)$/,
+        use: ['isomorphic-style-loader', 'css-loader', 'sass-loader'],
+      },
     ],
   },
   plugins: [

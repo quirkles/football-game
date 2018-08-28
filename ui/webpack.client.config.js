@@ -1,4 +1,4 @@
-/* globals process __dirname */
+/* globals process __dirname module */
 const path = require('path');
 const webpack = require('webpack');
 const merge = require('webpack-merge');
