@@ -18,7 +18,7 @@
     "build": "npm-run-all webpack:init webpack:client webpack:server",
     "start": "NODE_ENV=production node server-dist/server.js --colors",
     "start:dev": "APP_ENV=development NODE_ENV=development nodemon --watch dist --watch server-dist --ext js server-dist/server.js",
-    "development": "npm run webpack:dev && npm run start:dev",
+    "development": "npm-run-all --parallel webpack:watch start:dev",
     "dev": "npm run development"
   },
   "author": "quirkles",
@@ -26,6 +26,7 @@
   "dependencies": {
     "cookie-parser": "^1.4.3",
     "express": "^4.16.3",
+    "foundation-sites": "^6.5.0-rc.2",
     "history": "latest",
     "immutable": "^3.8.2",
     "prop-types": "latest",
