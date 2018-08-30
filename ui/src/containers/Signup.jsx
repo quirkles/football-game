@@ -2,19 +2,30 @@ import React from 'react';
 
 const Signup = () => {
   return (
-    <div>
-      <h3>Sign up</h3>
-      <div>
-        <form>
-          <input type="text" name="email" placeholder="email" />
-          <input type="password" name="password" placeholder="password" />
-          <input type="text" name="confirm" placeholder="Confirm password" />
-          <button>Sign up</button>
-          <p>or</p>
-          <button>Sign up with Facebook</button>
-        </form>
+    <form>
+      <div className="grid-container">
+        <div className="grid-x grid-padding-x">
+          <div className="small-12 cell">
+            <label>
+              Email
+              <input type="text" placeholder=".medium-6.cell" />
+            </label>
+          </div>
+          <div className="small-12 cell">
+            <label>
+              Password
+              <input type="text" placeholder=".medium-6.cell" />
+            </label>
+          </div>
+          <div className="small-12 cell">
+            <label>
+              Confirm Password
+              <input type="text" placeholder=".medium-6.cell" />
+            </label>
+          </div>
+        </div>
       </div>
-    </div>
+    </form>
   );
 };
 

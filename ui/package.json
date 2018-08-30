@@ -18,7 +18,7 @@
     "build": "npm-run-all webpack:init webpack:client webpack:server",
     "start": "NODE_ENV=production node server-dist/server.js --colors",
     "start:dev": "APP_ENV=development NODE_ENV=development nodemon --watch dist --watch server-dist --ext js server-dist/server.js",
-    "development": "npm-run-all --parallel webpack:watch start:dev",
+    "development": "npm-run-all --parallel start:dev webpack:watch",
     "dev": "npm run development"
   },
   "author": "quirkles",
@@ -50,8 +50,6 @@
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "babel-watch": "^2.0.7",
-    "concurrently": "^3.6.1",
-    "cross-env": "^5.2.0",
     "css-loader": "^1.0.0",
     "eslint": "^5.4.0",
     "eslint-config-prettier": "^3.0.1",

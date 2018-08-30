@@ -26,7 +26,16 @@ const webpackDevConfig = {
       },
       {
         test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+          use: [
+              'style-loader',
+              'css-loader',
+              {
+                  loader: 'sass-loader',
+                  options: {
+                      includePaths: [path.resolve(__dirname, 'node_modules/foundation-sites/scss')]
+                  }
+              }
+          ],
       },
       {
         test: /\.css$/,

@@ -22,6 +22,9 @@ let webpackConfig = {
       'react-helmet',
     ],
   },
+  externals: [
+    'foundation-sites'
+  ],
   output: {
     path: path.join(__dirname, 'dist'),
     filename:
