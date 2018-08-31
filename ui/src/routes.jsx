@@ -1,8 +1,5 @@
-import HelloWorld from './containers/HelloWorld';
-import App from './containers/App';
-import NotFound from './containers/NotFound';
-import SignUp from './containers/Signup';
-import Login from './components/Login';
+import App from './App';
+import { SignUpPage, NotFoundPage } from './pages';
 
 const routes = [
   {
@@ -10,20 +7,12 @@ const routes = [
     component: App,
     routes: [
       {
-        path: '/hello-world',
-        component: HelloWorld,
-      },
-      {
-        path: '/signup',
-        component: SignUp,
-      },
-      {
-        path: '/login',
-        component: Login,
+        path: '/sign-up',
+        component: SignUpPage,
       },
       {
         path: '*',
-        component: NotFound,
+        component: NotFoundPage,
       },
     ],
   },

@@ -1,0 +1,17 @@
+@import "../../../scss/foundation";
+
+.sign-up-form-component {
+  h2 {
+    color: get-color("light");
+    background-color: get-color("primary");
+    text-align: center;
+    padding: 0.5em 1em;
+    margin-bottom: 0;
+  }
+  .form-container {
+    background-color: get-color("lighter");
+    border: 1px solid get-color("primary");
+    padding: 0.5em 1em;
+
+  }
+}
