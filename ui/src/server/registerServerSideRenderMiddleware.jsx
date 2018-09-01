@@ -1,5 +1,6 @@
 /* globals console process*/
 import React from 'react';
+import { Provider } from 'react-redux';
 import ReactDOMServer from 'react-dom/server';
 import { StaticRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
@@ -8,6 +9,8 @@ import Helmet from 'react-helmet';
 import Html from './Html';
 import { BASENAME } from '../constants';
 import routes from '../routes';
+import { createStore } from 'redux';
+import reducers from '../reducers';
 
 const registerServerSideRenderMiddleware = app => {
   const bundleInfo =
@@ -36,10 +39,13 @@ const registerServerSideRenderMiddleware = app => {
   app.use((req, res) => {
     console.log(req.url); // eslint-disable-line
     let context = {};
+    const store = createStore(reducers);
     const childComponent = (
-      <StaticRouter location={req.url} context={context}>
-        {renderRoutes(routes)}
-      </StaticRouter>
+      <Provider store={store}>
+        <StaticRouter location={req.url} context={context}>
+          {renderRoutes(routes)}
+        </StaticRouter>
+      </Provider>
     );
     const children = ReactDOMServer.renderToString(childComponent);
     const resourceHints = [
