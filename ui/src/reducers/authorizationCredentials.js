@@ -3,7 +3,7 @@ import { Map } from 'immutable';
 import { EDIT_USER } from '../actions/authorizationCredentialsActions';
 
 const defaultState = Map({
-  email: 'user@gmail.com',
+  email: '',
   password: '',
   confirmPassword: '',
 });
