@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { pipe } from 'ramda';
 
@@ -59,6 +60,10 @@ const UnconnectedSignUpForm = ({
                 <button type="button" className="success button">
                   Submit
                 </button>
+                <p>or</p>
+                <Link to="/login" type="button" className="info button">
+                  Log in
+                </Link>
               </div>
             </div>
           </div>

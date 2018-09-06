@@ -1,11 +1,15 @@
 import App from './App';
-import { SignUpPage, NotFoundPage } from './pages';
+import { LoginPage, SignUpPage, NotFoundPage } from './pages';
 
 const routes = [
   {
     path: '/',
     component: App,
     routes: [
+      {
+        path: '/login',
+        component: LoginPage,
+      },
       {
         path: '/sign-up',
         component: SignUpPage,
