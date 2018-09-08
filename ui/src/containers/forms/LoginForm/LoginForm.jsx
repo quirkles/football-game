@@ -45,16 +45,13 @@ const UnconnectedLoginForm = ({
                     />
                   </label>
                 </div>
-                <div>
-                  <div className="cell">
-                    <button type="button" className="success button">
-                      Log in
-                    </button>
-                    <p> or </p>
-                    <Link to="/sign-up" type="button" className="info button">
-                      Sign up
-                    </Link>
-                  </div>
+                <div className="cell">
+                  <button type="button" className="button login-button">
+                    Log in
+                  </button>
+                  <Link to="/sign-up" className="signuo">
+                    Sign up
+                  </Link>
                 </div>
               </div>
             </div>

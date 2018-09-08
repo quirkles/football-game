@@ -11,7 +11,11 @@
 
   .form-container {
     background-color: get-color("lighter");
-    border: 1px solid get-color("primary");
+    border: 1px solid get-color("success");
     padding: 0.5em 1em;
+
+    .login-button{
+      @include button-style(get-color('success'), 'auto', get-color('light'));
+    }
   }
 }
